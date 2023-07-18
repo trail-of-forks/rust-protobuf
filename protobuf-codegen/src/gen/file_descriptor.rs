@@ -41,12 +41,6 @@ fn write_generate_file_descriptor(
         "let mut deps = {vec_with_capacity};",
         vec_with_capacity = expr_vec_with_capacity_const(deps.len())
     ));
-    for f in deps {
-        w.write_line(&format!(
-            "deps.push({}().clone());",
-            proto_path_to_fn_file_descriptor(f, customize)
-        ));
-    }
 
     let scope = FileScope { file_descriptor };
 
